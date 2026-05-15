@@ -25,7 +25,7 @@ class UserController extends Controller
             $request->validated()
         );
         return ApiResponse::success('Your profile successfully updated', 200, [
-            'user' => new UserResource($updatedUser->withCount([
+            'user' => new UserResource($updatedUser->loadCount([
                 'tasks_created',
                 'tasks_executed',
                 'workspaces',

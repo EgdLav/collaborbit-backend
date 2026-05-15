@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('role')->default('user');
-            $table->string('avatar')->default('avatars/default.png');
+            $table->string('avatar')->default('avatars/default.svg');
             $table->enum('department', ['Backend Development', 'Frontend Development', 'Engineering', 'Mobile Development', 'DevOps', 'Quality Assurance', 'Data Engineering', 'Data Science', 'Product Management', 'UI/UX Design', 'Graphic Design', 'Research & Analytics', 'Marketing', 'Sales', 'Business Development', 'Human Resources', 'Finance', 'Legal', 'Operations', 'Public Relations', 'Copywriting' ]);
             $table->text('bio')->nullable();
             $table->string('email')->unique();
