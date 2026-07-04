@@ -1,0 +1,15 @@
+[90m= [39m[
+    "[34mdriver[39m" => "[32mreverb[39m",
+    "[34mkey[39m" => "[32mg8zjeznjatrigpoluz2j[39m",
+    "[34msecret[39m" => "[32mcollaborbit-secret[39m",
+    "[34mapp_id[39m" => "[32m1[39m",
+    "[34moptions[39m" => [
+      "[34mhost[39m" => [36mnull[39m,
+      "[34mport[39m" => [35m443[39m,
+      "[34mscheme[39m" => "[32mhttps[39m",
+      "[34museTLS[39m" => [36mtrue[39m,
+      "[34mpath[39m" => "",
+    ],
+    "[34mclient_options[39m" => [],
+  ]
+

@@ -34,34 +34,24 @@ class Handler extends ExceptionHandler
     {
 
         $this->renderable(function (AccessDeniedHttpException $e, $request) {
-            if ($request->expectsJson()) {
-                return response()->json(['message' => 'Access denied'], 403);
-            }
+            return response()->json(['message' => 'Access denied'], 403);
         });
         $this->reportable(function (Throwable $e) {
             //
         });
         $this->renderable(function (AuthenticationException $e, $request) {
-            if ($request->expectsJson()) {
-                return response()->json(['message' => 'Unauthenticated'], 401);
-            }
+            return response()->json(['message' => 'Unauthenticated'], 401);
         });
 
         $this->renderable(function (AuthorizationException $e, $request) {
-            if ($request->expectsJson()) {
-                return response()->json(['message' => 'Access denied'], 403);
-            }
+            return response()->json(['message' => 'Access denied'], 403);
         });
 
         $this->renderable(function (NotFoundHttpException $e, $request) {
-            if ($request->expectsJson()) {
-                return response()->json(['message' => 'Not found'], 404);
-            }
+            return response()->json(['message' => 'Not found'], 404);
         });
         $this->renderable(function (ModelNotFoundException $e, $request) {
-            if ($request->expectsJson()) {
-                return response()->json(['message' => 'Model not found'], 404);
-            }
+            return response()->json(['message' => 'Model not found'], 404);
         });
     }
 }
