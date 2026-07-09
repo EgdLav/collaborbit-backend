@@ -28,9 +28,9 @@ class AuthController extends Controller
         if (!$token) {
             return ApiResponse::error('Authentication failed', 401);
         }
-//        if (!auth()->user()->hasVerifiedEmail()) {
-//            return ApiResponse::error('Email not verified', 403);
-//        } TODO
+        if (!auth()->user()->hasVerifiedEmail()) {
+            return ApiResponse::error('Email not verified', 403);
+        }
         return ApiResponse::success('Successfully logged in', 200, [
             'token' => $token,
             'user' => new UserResource(auth()->user()),
@@ -52,16 +52,14 @@ class AuthController extends Controller
         if (!$user) {
             return ApiResponse::error('Invalid token', 400);
         }
-
-        $user->email_verified_at = now();
-        $user->email_token = null;
-        $user->save();
-
-        return response()->json(['message' => 'Email verified']);
-//        if (!hash_equals($hash, sha1($user->getEmailForVerification()))){
-//            return ApiResponse::error('Access denied', 403);
-//        }
+        if ($user->hasVerifiedEmail()) {
+            return ApiResponse::success('Email already verified');
+        }
+//        $user->email_verified_at = now();
+//        $user->email_token = null;
+//        $user->save();
 //        $user->markEmailAsVerified();
-//        return ApiResponse::success('Email verified successfully');
+//        return response()->json(['message' => 'Email verified']);
+        return ApiResponse::success('Email verified successfully');
     }
 }
