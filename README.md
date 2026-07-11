@@ -146,4 +146,6 @@ docker compose logs -f
 
 ## Related Repository
 
-Frontend: github.com/EgdLav/collaborbit-frontend
+Frontend: https://github.com/EgdLav/collaborbit-frontend
+
+[Backend](https://github.com/EgdLav/collaborbit-backend) | [Frontend](https://github.com/EgdLav/collaborbit-frontend) | [Live Demo](https://github.com/EgdLav/collaborbit-frontend)
