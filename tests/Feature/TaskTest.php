@@ -51,6 +51,7 @@ class TaskTest extends TestCase
 
     public function test_task_creator_can_update_task(): void
     {
+        $this->withoutExceptionHandling();
         $owner = User::factory()->create();
         $executor = User::factory()->create();
 
@@ -73,14 +74,19 @@ class TaskTest extends TestCase
             'name' => 'Initial task',
         ]);
 
+
         $this->actingAs($owner, 'sanctum');
 
-        $response = $this->patchJson(
-            "/api/workspaces/{$workspace->id}/categories/{$category->id}/tasks/{$task->id}",
-            [
-                'name' => 'Updated task',
-            ]
-        );
+        $response = $this->actingAs($owner)
+            ->patchJson(
+                "/api/workspaces/{$workspace->id}/categories/{$category->id}/tasks/{$task->id}",
+                [
+                    'name' => 'Updated task',
+                    'description' => $task->description,
+                    'due_date' => $task->due_date,
+                    'executor_id' => $task->executor_id,
+                ]
+            );
 
         $response->assertStatus(200)
             ->assertJsonFragment([

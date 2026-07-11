@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@collaborbit.com',
             'password' => 'admincollab123',
         ]);
+        User::factory()->count(50)->create();
     }
 }

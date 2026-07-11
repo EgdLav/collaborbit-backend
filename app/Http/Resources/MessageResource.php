@@ -23,6 +23,7 @@ class MessageResource extends JsonResource
             'user' => new UserResource(
                 $this->whenLoaded('user')
             ),
+            'is_mine' => auth()->id() === $this->user_id,
         ];
     }
 }

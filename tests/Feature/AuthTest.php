@@ -19,7 +19,6 @@ class AuthTest extends TestCase
             'password' => 'password123',
             'department' => 'Backend Development',
         ]);
-
         $response->assertStatus(201);
 
         $this->assertDatabaseHas('users', [

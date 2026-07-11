@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Chat;
 use App\Models\User;
 use App\Models\Workspace;
 use App\Models\Invitation;
@@ -76,11 +77,16 @@ class InvitationTest extends TestCase
     /** @test */
     public function invitee_can_accept_invitation()
     {
+        $this->withoutExceptionHandling();
         $owner = User::factory()->create();
         $invitee = User::factory()->create();
 
         $workspace = Workspace::factory()->create([
             'owner_id' => $owner->id,
+        ]);
+        $chat = Chat::factory()->create([
+            'workspace_id' => $workspace->id,
+            'type' => 'workspace',
         ]);
 
         $invitation = Invitation::factory()

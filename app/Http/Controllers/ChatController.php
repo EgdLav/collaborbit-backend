@@ -110,9 +110,13 @@ class ChatController extends Controller
         $chat = Chat::create([
             'type' => 'private',
         ]);
-
         $chat->users()->attach([$authId, $user->id]);
-        $chat->load(['lastMessage']);
+
+        $chat->refresh();
+        $chat->load([
+            'users',
+            'lastMessage',
+        ]);
 
         return ApiResponse::success(data: [
             'chat' => new ChatResource($chat),
