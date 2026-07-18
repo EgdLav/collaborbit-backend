@@ -82,6 +82,9 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function getAvatarUrlAttribute()
     {
+        if ($this->avatar == 'images/default.svg') {
+            return asset('images/default-avatar.svg');
+        }
         return url(Storage::url($this->avatar));
     }
 }
